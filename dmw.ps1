@@ -51,7 +51,7 @@ if ($ProvisionedPackage) {
         foreach ($currentItemName in $ProvisionedPackage) {
             $count = $count + 1
             $Completed = ($count / $ProvisionedPackage.Count) * 100
-            Write-Progress -Status $currentItemName.DisplayName -PercentComplete $Completed
+            Write-Progress -Activity 'Removing packages that will be installed for each new user.' -Status $currentItemName.DisplayName -PercentComplete $Completed
             Remove-AppxProvisionedPackage -Online -PackageName $currentItemName.PackageName | Out-Null
         }
     }
